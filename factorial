@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("n değerini girin: ");
+        int n = scanner.nextInt();
+
+        System.out.print("r değerini girin: ");
+        int r = scanner.nextInt();
+
+        long result = calculateCombination(n, r);
+
+        System.out.println("C(" + n + ", " + r + ") = " + result);
+    }
+
+    public static long calculateCombination(int n, int r) {
+        long numerator = factorial(n);
+        long denominator = factorial(r) * factorial(n - r);
+
+        return numerator / denominator;
+    }
+
+    public static long factorial(int number) {
+        long result = 1;
+
+        for (int i = 1; i <= number; i++) {
+            result *= i;
+        }
+
+        return result;
+    }
+}
