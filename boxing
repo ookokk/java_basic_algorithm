@@ -1,0 +1,78 @@
+import java.util.Random;
+
+class Boksor {
+    private String isim;
+    private int saglik;
+    private int guc;
+
+    public Boksor(String isim, int saglik, int guc) {
+        this.isim = isim;
+        this.saglik = saglik;
+        this.guc = guc;
+    }
+
+    public String getIsim() {
+        return isim;
+    }
+
+    public int getSaglik() {
+        return saglik;
+    }
+
+    public void setSaglik(int saglik) {
+        this.saglik = saglik;
+    }
+
+    public int getGuc() {
+        return guc;
+    }
+
+    public void vur(Boksor rakip) {
+        int hasar = new Random().nextInt(guc);
+        rakip.setSaglik(rakip.getSaglik() - hasar);
+        System.out.println(this.isim + " " + rakip.isim + "'a " + hasar + " hasar vurdu.");
+    }
+}
+
+class BoksMaçı {
+    private Boksor boksor1;
+    private Boksor boksor2;
+
+    public BoksMaçı(Boksor boksor1, Boksor boksor2) {
+        this.boksor1 = boksor1;
+        this.boksor2 = boksor2;
+    }
+
+    public void baslat() {
+        System.out.println("----- Boks Maçı Başlıyor -----");
+        System.out.println(boksor1.getIsim() + " vs " + boksor2.getIsim());
+
+        boolean ilkDovusSirasiBoksor1 = new Random().nextBoolean();
+
+        if (ilkDovusSirasiBoksor1) {
+            System.out.println(boksor1.getIsim() + " ilk olarak dövüşe başlıyor.");
+        } else {
+            System.out.println(boksor2.getIsim() + " ilk olarak dövüşe başlıyor.");
+        }
+
+        while (boksor1.getSaglik() > 0 && boksor2.getSaglik() > 0) {
+            if (ilkDovusSirasiBoksor1) {
+                boksor1.vur(boksor2);
+            } else {
+                boksor2.vur(boksor1);
+            }
+            ilkDovusSirasiBoksor1 = !ilkDovusSirasiBoksor1;
+        }
+
+        if (boksor1.getSaglik() > 0) {
+            System.out.println(boksor1.getIsim() + " kazandı!");
+        } else if (boksor2.getSaglik() > 0) {
+            System.out.println(boksor2.getIsim() + " kazandı!");
+        } else {
+            System.out.println("Berabere!");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args)
