@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class FrekansBulma {
+    public static void main(String[] args) {
+        int[] dizi = {10, 20, 20, 10, 10, 20, 5, 20};
+
+        // Elemanların frekanslarını hesaplayan bir Harita oluştur
+        Map<Integer, Integer> frekanslar = new HashMap<>();
+
+        // Diziyi dolaşarak frekansları hesapla
+        for (int eleman : dizi) {
+            if (frekanslar.containsKey(eleman)) {
+                // Eleman zaten haritada varsa frekansını bir artır
+                int frekans = frekanslar.get(eleman);
+                frekanslar.put(eleman, frekans + 1);
+            } else {
+                // Eleman haritada yoksa frekansını 1 olarak ayarla
+                frekanslar.put(eleman, 1);
+            }
+        }
+
+        // Frekansları yazdır
+        for (Map.Entry<Integer, Integer> entry : frekanslar.entrySet()) {
+            int eleman = entry.getKey();
+            int frekans = entry.getValue();
+            System.out.println(eleman + " sayısı " + frekans + " kere tekrar edildi.");
+        }
+    }
+}
