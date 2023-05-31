@@ -1,0 +1,28 @@
+                                   +------------------+
+                                   |     Building     |
+                                   +------------------+
+                                   | - floors: int    |
+                                   | - elevators: Elevator[] |
+                                   | - callButtons: CallButton[] |
+                                   +------------------+
+                                           |
+                          ___________________|___________________
+                          |                                       |
+            +-------------------------+                  +-------------------------+
+            |       Elevator          |                  |       CallButton        |
+            +-------------------------+                  +-------------------------+
+            | - capacity: int         |                  | - direction: Direction   |
+            | - currentFloor: int     |                  | - floor: int             |
+            | - destinationFloors: int[] |                | - isPressed: boolean    |
+            | - isOpen: boolean       |                  +-------------------------+
+            | - isMoving: boolean     |       
+            +-------------------------+       
+                       |       
+          _____________|___________        
+          |                       |      
++-----------------+    +---------------------+
+|    ElevatorDoor |    | ArrivalSignalLight  |
++-----------------+    +---------------------+
+| - isOpen: boolean|    | - isLit: boolean    |
++-----------------+    +---------------------+
+            
