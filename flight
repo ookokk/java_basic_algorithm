@@ -1,0 +1,25 @@
++-----------------------+            +----------------+          +----------------+
+|   AirlineCompany      |            |    Flight      |          |    Pilot       |
++-----------------------+            +----------------+          +----------------+
+| - airlineId: int      |            | - flightId: int|          | - pilotId: int |
+| - name: String        |            | - departureAirport: String |   | - name: String  |
++-----------------------+            | - arrivalAirport: String   |   | - experienceLevel: String |
+                                     | - departureTime: DateTime  |   +----------------+
+                                     | - arrivalTime: DateTime    |
+                                     | - aircraft: Aircraft       |
+                                     | - pilot: Pilot             |
+                                     | - coPilot: Pilot           |
+                                     +----------------+
+                                           |               +------------------+
+                                           |               |     Airport      |
+                                           +---------------+------------------+
+                                                           | - airportId: int |
+                                                           | - name: String   |
+                                                           +------------------+
+                                                          
+
+                                     +-----------------------------+
+                                     |           Aircraft           |
+                                     +-----------------------------+
+                                     | - aircraftId: int           |
+                                     | - type: String               |
