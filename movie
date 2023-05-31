@@ -1,0 +1,34 @@
++---------------------+          +-----------------+          +----------------+
+|      Movie          |          |    User         |          |   Subscription |
++---------------------+          +-----------------+          +----------------+
+| - movieId: int      |          | - userId: int   |          | - subscriptionId: int |
+| - title: String     |          | - name: String  |          | - user: User           |
+| - genre: String     |          | - credits: int |          | - credits: int         |
+| - price: double     |          | - isSubscriber: boolean |   | - isSubscribed: boolean|
++---------------------+          +-----------------+          +----------------+
+      |                            |                              |   
+      |                          +-|-+                            |
+      |                          |   |                            |
++-------------------+            |   |                            |
+|   RentalRequest   |            |   |                            |
++-------------------+            |   |                            |
+| - requestId: int  |            |   |                            |
+| - movie: Movie    |            |   |                            |
+| - user: User      |            |   |                            |
++-------------------+            |   |                            |
+                                 |   |                            |
+                           +-------------+                       |
+                           | Purchase    |                       |
+                           +-------------+                       |
+                           | - purchaseId: int                  |
+                           | - movie: Movie                     |
+                           | - user: User                       |
+                           +-------------+                       |
+                                                                |
+                                                      +---------------------+
+                                                      |   CreditTransaction  |
+                                                      +---------------------+
+                                                      | - transactionId: int |
+                                                      | - user: User         |
+                                                      | - amount: double     |
+                                                      +---------------------+
