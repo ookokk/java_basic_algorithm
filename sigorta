@@ -1,0 +1,131 @@
+import java.util.*;
+
+public abstract class Account implements Comparable<Account> {
+    private AuthenticationStatus authenticationStatus;
+    private User user;
+    private ArrayList<Insurance> insuranceList;
+
+    public enum AuthenticationStatus {
+        SUCCESS,
+        FAIL
+    }
+
+    public Account(User user) {
+        this.authenticationStatus = AuthenticationStatus.FAIL;
+        this.user = user;
+        this.insuranceList = new ArrayList<>();
+    }
+
+    public abstract void addInsurance(Insurance insurance);
+
+    // Diğer metodlar ve getter/setterlar
+
+    public final void showUserInfo() {
+        // Müşteri bilgilerini ekrana yazdırma işlemleri
+    }
+
+    @Override
+    public int compareTo(Account other) {
+        // Account sınıfını TreeSet içinde sıralamak için compareTo metodunu doldurun
+    }
+}
+
+class User {
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private String profession;
+    private int age;
+    private ArrayList<Address> addressList;
+    private Date lastLoginDate;
+
+    public User(String name, String surname, String email, String password, String profession, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.profession = profession;
+        this.age = age;
+        this.addressList = new ArrayList<>();
+        this.lastLoginDate = new Date();
+    }
+
+    // Diğer metodlar ve getter/setterlar
+}
+
+interface Address {
+    // Adresle ilgili gerekli metodları tanımlayın
+}
+
+class HomeAddress implements Address {
+    // HomeAddress sınıfını tanımlayın
+}
+
+class BusinessAddress implements Address {
+    // BusinessAddress sınıfını tanımlayın
+}
+
+class AddressManager {
+    public static void addAddress(User user, Address address) {
+        user.getAddressList().add(address);
+    }
+
+    public static void removeAddress(User user, Address address) {
+        user.getAddressList().remove(address);
+    }
+}
+
+abstract class Insurance {
+    private String name;
+    private double price;
+    private Date startDate;
+    private Date endDate;
+
+    public Insurance(String name, double price, Date startDate, Date endDate) {
+        this.name = name;
+        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public abstract double calculate();
+
+    // Diğer metodlar ve getter/setterlar
+}
+
+class HealthInsurance extends Insurance {
+    public HealthInsurance(double price, Date startDate, Date endDate) {
+        super("Health Insurance", price, startDate, endDate);
+    }
+
+    @Override
+    public double calculate() {
+        // Sağlık sigortası ücretini hesaplayan kodu doldurun
+    }
+}
+
+class ResidenceInsurance extends Insurance {
+    public ResidenceInsurance(double price, Date startDate, Date endDate) {
+        super("Residence Insurance", price, startDate, endDate);
+    }
+
+    @Override
+    public double calculate() {
+        // Konut sigortası ücretini hesaplayan kodu doldurun
+    }
+}
+
+class TravelInsurance extends Insurance {
+    public TravelInsurance(double price, Date startDate, Date endDate) {
+        super("Travel Insurance", price, startDate, endDate);
+    }
+
+    @Override
+    public double calculate() {
+        // Seyahat sigortası ücretini hesaplayan kodu doldurun
+    }
+}
+
+class CarInsurance extends Insurance {
+    public CarInsurance(double price, Date startDate
