@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
+class FixtureGenerator {
+    public static List<String> generateFixture(List<String> teams) {
+        List<String> fixture = new ArrayList<>();
+
+        // Eğer takım sayısı tek ise "Bay" takımını ekle
+        if (teams.size() % 2 != 0) {
+            teams.add("Bay");
+        }
+
+        int numWeeks = teams.size() - 1;  // Hafta sayısı
+        int numMatchesPerWeek = teams.size() / 2;  // Her hafta oynanacak maç sayısı
+
+        for (int week = 0; week < numWeeks; week++) {
+            for (int match = 0; match < numMatchesPerWeek; match++) {
+                String homeTeam = teams.get(match);
+                String awayTeam = teams.get(teams.size() - 1 - match);
+
+                // Maçı fikstüre ekle
+                fixture.add(homeTeam + " vs " + awayTeam);
+            }
+
+            // Takımları döndür
+            Collections.rotate(teams.subList(1, teams.size()), 1);
+        }
+
+        return fixture;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> teams = new ArrayList<>();
+        teams.add("Takım 1");
+        teams.add("Takım 2");
+        teams.add("Takım 3");
+        teams.add("Takım 4");
+        teams.add("Takım 5");
+        teams.add("Takım 6");
+
+        List<String> fixture = FixtureGenerator.generateFixture(teams);
+
+        System.out.println("Fikstür:");
+        for (int i = 0; i < fixture.size(); i++) {
+            System.out.println("Hafta " + (i + 1) + ": " + fixture.get(i));
+        }
+    }
+}
